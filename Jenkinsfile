@@ -1,17 +1,21 @@
-def code
+pipeline {
+    agent any
 
-node('any') {
-  stage('Checkout') {
-    checkout scm
-  }
-
-  stage('Load') {
-    code = load 'example.groovy'
-  }
-
-  stage('Execute') {
-    code.example1()
-  }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
-
-code.example2()
